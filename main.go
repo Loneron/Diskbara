@@ -53,17 +53,22 @@ func main() {
 	// 'Mac' options tailor the window when running on macOS.
 	// 'BackgroundColour' is the background colour of the window.
 	// 'URL' is the URL that will be loaded into the webview.
+
 	app.Window.NewWithOptions(application.WebviewWindowOptions{
 		Title: "Diskbara",
-		// Window sized to the golden ratio (1000 / 618 ≈ 1.618).
+
 		Width:  1000,
 		Height: 618,
+
+		MinWidth:  480,
+		MinHeight: 560,
+
 		Mac: application.MacWindow{
 			InvisibleTitleBarHeight: 50,
 			Backdrop:                application.MacBackdropTranslucent,
 			TitleBar:                application.MacTitleBarHiddenInset,
 		},
-		BackgroundColour: application.NewRGB(6, 7, 15),
+		BackgroundColour: application.NewRGB(20, 44, 36),
 		URL:              "/",
 	})
 
