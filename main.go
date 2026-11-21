@@ -37,9 +37,12 @@ func main() {
 	app := application.New(application.Options{
 		Name:        "Diskbara",
 		Description: "A safe and intuitive disk space analyzer",
+
 		Services: []application.Service{
 			application.NewService(&GreetService{}),
+			application.NewService(&FolderService{}),
 		},
+
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
 		},

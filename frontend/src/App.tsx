@@ -1,4 +1,19 @@
+import {useState} from "react";
+import {SelectFolder} from "../bindings/changeme/folderservice";
+
 function App() {
+  const [selectedFolder, setSelectedFolder] = useState("");
+  const handleSelectFolder = async () => {
+    try {
+      const path = await SelectFolder();
+      if (path) {
+        setSelectedFolder(path);
+      console.log("Капибара выбрала папочку:", path);
+      }
+    } catch (error) {
+      console.error("Не получилось выбрать папочку:", error);
+    }
+  };
   return (
     <main className="container">
       <div className="hero">
@@ -15,9 +30,21 @@ function App() {
             <p>
               Узнай, что занимает место на твоем компуктере.
             </p>
-            <button className="btn" disabled>
-              Выбери папку
-            </button>
+            {selectedFolder ? (
+              <>
+                <p className="selected-folder">
+                  🦫 Папочка выбрана: {selectedFolder}
+                </p>
+
+                <button className="btn" onClick={handleSelectFolder}>
+                  Изменить выбор
+                </button>
+              </>
+            ) : (
+              <button className="btn" onClick={handleSelectFolder}>
+                Выбери папочку
+              </button>
+            )}
           </section>
         </div>
 
