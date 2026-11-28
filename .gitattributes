@@ -1,0 +1,5 @@
+# Wails platform build infrastructure
+build/** linguist-detectable=false
+
+# Generated Wails frontend bindings
+frontend/bindings/** linguist-generated=true
